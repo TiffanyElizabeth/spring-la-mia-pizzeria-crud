@@ -72,4 +72,13 @@ public class pizza {
         this.price = price;
     }
 
+
+    public pizza(Integer id, String name, String description, String url, double price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.url = url;
+        this.price = price;
+    }
+    
 }
