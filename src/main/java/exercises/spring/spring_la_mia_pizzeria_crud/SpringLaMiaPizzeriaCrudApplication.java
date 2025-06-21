@@ -1,4 +1,4 @@
-package java.spring.spring_la_mia_pizzeria_crud;
+package exercises.spring.spring_la_mia_pizzeria_crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
