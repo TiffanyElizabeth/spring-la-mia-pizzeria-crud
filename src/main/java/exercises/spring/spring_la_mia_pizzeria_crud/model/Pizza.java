@@ -1,4 +1,4 @@
-package model;
+package exercises.spring.spring_la_mia_pizzeria_crud.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +15,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizzas")
-public class pizza {
+public class Pizza {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,13 +72,20 @@ public class pizza {
         this.price = price;
     }
 
+    public Pizza() {
+    }
 
-    public pizza(Integer id, String name, String description, String url, double price) {
+    public Pizza(Integer id, String name, String description, String url, double price) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.url = url;
         this.price = price;
     }
-    
+
+    @Override
+    public String toString() {
+        return String.format("%s : €%.2f", this.name, this.price);
+    }
+
 }

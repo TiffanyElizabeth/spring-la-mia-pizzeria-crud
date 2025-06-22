@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/template :: head}"></div>
+    <title>pizzas index</title>
+</head>
+
+<body>
+    <div th:replace="~{fragments/template :: navbar}"></div>
+    <!-- <h1>pizzas index</h1>
+    <p th:text="${pizzas}"></p> -->
+
+    <div class="container my-5">
+        <h1 class="mb-4">Our Pizzas</h1>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            <div class="col" th:each="pizza : ${pizzas}">
+                <div class="card h-100 shadow-sm">
+                    <img th:src="${pizza.url != null && !pizza.url.isEmpty() ? pizza.url : '/placeholder.jpg'}"
+                        class="card-img-top" alt="Pizza Image">
+
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title">
+                            <a th:href="@{'/pizzas/' + ${pizza.id}}" th:text="${pizza.name}"></a>
+                        </h5>
+                        <p class="card-text fw-semibold text-dark"
+                            th:text="'€' + ${#numbers.formatDecimal(pizza.price, 1, 'COMMA', 2, 'POINT')}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/template :: js}"></div>
+</body>
+
+</html>
