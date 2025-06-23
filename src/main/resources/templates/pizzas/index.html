@@ -14,11 +14,14 @@
     <div class="container my-5">
         <h1 class="mb-4">Our Pizzas</h1>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+        <div th:if="${!hasPizzas}" class="alert alert-info">We apologise. No pizzas are currently available.</div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4" th:if="${hasPizzas}">
             <div class="col" th:each="pizza : ${pizzas}">
                 <div class="card h-100 shadow-sm">
-                    <img th:src="${pizza.url != null && !pizza.url.isEmpty() ? pizza.url : '/placeholder.jpg'}"
+                    <img th:src="@{${pizza.url != null && !pizza.url.isEmpty() ? '/img/' + pizza.url : '/img/placeholder.jpg'}}"
                         class="card-img-top" alt="Pizza Image">
+
 
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h5 class="card-title">
