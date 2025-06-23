@@ -14,6 +14,13 @@
     <div class="container my-5">
         <h1 class="mb-4">Our Pizzas</h1>
 
+        <form th:action="@{/pizzas/searchByName}" method="get" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="name" class="form-control" placeholder="Search pizzas by name" />
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
         <div th:if="${!hasPizzas}" class="alert alert-info">We apologise. No pizzas are currently available.</div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4" th:if="${hasPizzas}">

@@ -29,7 +29,7 @@ public class PizzaController {
         List<Pizza> pizzas = repository.findAll(); // SELECT * FROM `pizzas` and give me a list of pizza objects
         model.addAttribute("pizzas", pizzas);
         model.addAttribute("hasPizzas", !pizzas.isEmpty());
-        return "pizzas/index";
+        return "/pizzas/index";
 
     }
 
@@ -38,4 +38,22 @@ public class PizzaController {
         model.addAttribute("pizza", repository.findById(id).get());
         return "/pizzas/detail";
     }
+
+    @GetMapping("/searchByName")
+    public String searchByName(@RequestParam(name = "name") String name, Model model) {
+        List<Pizza> pizzas = repository.findByNameContainingIgnoreCase(name);
+        model.addAttribute("pizzas", pizzas);
+        model.addAttribute("hasPizzas", !pizzas.isEmpty());
+        return "/pizzas/index";
+    }
+
+    // @GetMapping("/search")
+    // public String search(@RequestParam(name = "query") String query, Model model)
+    // {
+    // List<Pizza> pizzas =
+    // repository.findByNameOrDescriptionContainingIgnoreCase(query, query);
+    // model.addAttribute("pizzas", pizzas);
+    // model.addAttribute("hasPizzas", !pizzas.isEmpty());
+    // return "/pizzas/index";
+    // } DOESN'T WORK BECAUSE OF @LOB in DESCRIPTION
 }
