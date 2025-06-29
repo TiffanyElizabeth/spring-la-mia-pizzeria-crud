@@ -22,9 +22,11 @@ public class Pizza {
     private Integer id;
 
     @NotBlank(message = "Required field")
+    @Size(max = 40, message = "max 40 characters")
     private String name;
 
     @Lob
+    @Size(max = 800, message = "max 800 characters")
     private String description;
 
     private String url;
